@@ -1,23 +1,27 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import { globalErrorHandler } from './middlewares/globalErrorHandler';
+import { authRoutes } from './routes/auth.routes';
 
 const app: Application = express();
 
 app.use(cors());
 app.use(express.json());
 
-// Base Route
+// ১. Base Route
 app.get('/', (req: Request, res: Response) => {
   res.status(200).json({ success: true, message: "Welcome to RentNest API" });
 });
 
-// Global Error Handler
-app.use(globalErrorHandler);
+// ২. Application Routes (সব মেইন রাউট ৪০৪ এবং গ্লোবাল এরর হ্যান্ডলারের ওপরে থাকবে)
+app.use('/api/auth', authRoutes);
 
-// 404 Route Handling
+// ৩. 404 Route Handling (রাউট খুঁজে না পেলে এটি ট্রিগার হবে)
 app.use((req: Request, res: Response) => {
   res.status(404).json({ success: false, message: "Route Not Found", errorDetails: {} });
 });
+
+// ৪. Global Error Handler (একদম শেষে থাকবে যাতে যেকোনো জায়গা থেকে next(err) দিলে এখানে আসে)
+app.use(globalErrorHandler);
 
 export default app;
