@@ -5,8 +5,9 @@
   "main": "src/server.ts",
   "type": "module",
   "scripts": {
+    "postinstall": "prisma generate",
+    "build": "prisma generate && tsc",
     "dev": "tsx watch src/server.ts",
-    "build": "tsc",
     "start": "node dist/server.js",
     "prisma:seed": "tsx prisma/seed.ts",
     "prisma:migrate": "npx prisma migrate dev"
@@ -32,6 +33,7 @@
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^26.1.1",
+    "@vercel/node": "^5.8.22",
     "prisma": "^7.8.0",
     "tsx": "^4.23.0",
     "typescript": "^6.0.3"

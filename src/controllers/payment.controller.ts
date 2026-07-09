@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import Stripe from 'stripe';
+import { Prisma } from '@prisma/client';
 import prisma from '../config/prisma.js';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2023-10-16' as any });
@@ -30,7 +31,7 @@ export const confirmPayment = async (req: Request, res: Response, next: NextFunc
   try {
     const { rentalRequestId, transactionId, amount } = req.body;
 
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const payment = await tx.payment.create({
         data: { rentalRequestId, amount, transactionId, method: 'Stripe', status: 'COMPLETED', paidAt: new Date() },
       });
@@ -42,8 +43,8 @@ export const confirmPayment = async (req: Request, res: Response, next: NextFunc
 
       return payment;
     }, {
-      maxWait: 10000, // connection নেওয়ার জন্য সর্বোচ্চ অপেক্ষা (ms)
-      timeout: 15000, // পুরো transaction সম্পন্ন করার জন্য সর্বোচ্চ সময় (ms)
+      maxWait: 10000,
+      timeout: 15000,
     });
 
     res.status(200).json({ success: true, message: 'Payment confirmed successfully', data: result });
