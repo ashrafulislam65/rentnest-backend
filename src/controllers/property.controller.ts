@@ -1,10 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import prisma from '../config/prisma.js';
 
-
 export const getAllProperties = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { location, priceMin, priceMax, categoryId } = req.query;
+    const { location, priceMin, priceMax, categoryId, amenities } = req.query;
     const filters: any = { isAvailable: true };
 
     if (location) filters.location = { contains: String(location), mode: 'insensitive' };
@@ -13,6 +12,9 @@ export const getAllProperties = async (req: Request, res: Response, next: NextFu
       filters.price = {};
       if (priceMin) filters.price.gte = Number(priceMin);
       if (priceMax) filters.price.lte = Number(priceMax);
+    }
+    if (amenities) {
+      filters.amenities = { hasEvery: String(amenities).split(',').map(a => a.trim()) };
     }
 
     const properties = await prisma.property.findMany({ where: filters, include: { category: true } });
