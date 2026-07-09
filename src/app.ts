@@ -4,6 +4,7 @@ import cors from 'cors';
 import { publicPropertyRoutes } from './routes/property.routes.js';
 import { authRoutes } from './routes/auth.routes.js';
 import { globalErrorHandler } from './middlewares/globalErrorHandler.js';
+import { landlordRoutes } from './routes/landlord.routes.js';
 
 const app: Application = express();
 
@@ -18,6 +19,7 @@ app.get('/', (req: Request, res: Response) => {
 // ২. Application Routes (সব মেইন রাউট ৪০৪ এবং গ্লোবাল এরর হ্যান্ডলারের ওপরে থাকবে)
 app.use('/api/auth', authRoutes);
 app.use('/api', publicPropertyRoutes);
+app.use('/api/landlord', landlordRoutes);
 
 // ৩. 404 Route Handling (রাউট খুঁজে না পেলে এটি ট্রিগার হবে)
 app.use((req: Request, res: Response) => {
