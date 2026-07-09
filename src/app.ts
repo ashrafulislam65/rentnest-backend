@@ -8,6 +8,7 @@ import { landlordRoutes } from './routes/landlord.routes.js';
 import { rentalRoutes } from './routes/rental.routes.js';
 import { paymentRoutes } from './routes/payment.routes.js';
 import { adminRoutes } from './routes/admin.routes.js';
+import { reviewRoutes } from './routes/review.routes.js';
 
 const app: Application = express();
 
@@ -26,6 +27,7 @@ app.use('/api/landlord', landlordRoutes);
 app.use('/api/rentals', rentalRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 // ৩. 404 Route Handling (রাউট খুঁজে না পেলে এটি ট্রিগার হবে)
 app.use((req: Request, res: Response) => {

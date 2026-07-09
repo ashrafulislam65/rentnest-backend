@@ -1,9 +1,8 @@
 import express from 'express';
-import { getMe, loginUser, registerUser } from '../controllers/auth.controller'; 
-import { validateRequest } from '../middlewares/validateRequest';
-
-import { authGuard } from '../middlewares/authGuard'; 
-import { loginValidationSchema, registerValidationSchema } from '../validations/auth.validation';
+import { getMe, loginUser, registerUser } from '../controllers/auth.controller.js';
+import { validateRequest } from '../middlewares/validateRequest.js';
+import { authGuard } from '../middlewares/authGuard.js';
+import { loginValidationSchema, registerValidationSchema } from '../validations/auth.validation.js';
 
 const router = express.Router();
 
