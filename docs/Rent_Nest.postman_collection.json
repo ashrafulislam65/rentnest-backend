@@ -1,0 +1,805 @@
+{
+  "info": {
+    "_postman_id": "c6068663-3053-4ca6-9034-bedc2e5c8289",
+    "name": "Rent_Nest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51298097",
+    "_collection_link": "https://go.postman.co/collection/51298097-c6068663-3053-4ca6-9034-bedc2e5c8289?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "create_user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Jane Tenant\",\r\n    \"email\": \"tenant@test.com\",\r\n    \"password\": \"pass123\",\r\n    \"role\": \"TENANT\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login_user",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2ZGQ1NmQ0LTc0YzMtNGVlMS04MmRkLTE5ODQwZDMwYTcxYSIsImVtYWlsIjoidGVuYW50QHRlc3QuY29tIiwicm9sZSI6IlRFTkFOVCIsImlzQmFubmVkIjpmYWxzZSwiaWF0IjoxNzgzNTgzNDMzLCJleHAiOjE3ODM2Njk4MzN9.52C0mUVebcqAbQImh3G2IB6OzxeFkjQFRoyYKF2k7O4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"landlord@test.com\",\r\n    \"password\": \"pass123\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "profile",
+      "item": [
+        {
+          "name": "get_me",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2ZGQ1NmQ0LTc0YzMtNGVlMS04MmRkLTE5ODQwZDMwYTcxYSIsImVtYWlsIjoidGVuYW50QHRlc3QuY29tIiwicm9sZSI6IlRFTkFOVCIsImlzQmFubmVkIjpmYWxzZSwiaWF0IjoxNzgzNTgwNTMyLCJleHAiOjE3ODM2NjY5MzJ9.pdq6Z0sOz62oznGmKjqudrq8Hs9yYC2eh_c_jB9vA14",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/auth/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "create_category",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MjNkMmMyLTA2MGQtNDZmOS1iNTJiLWNhY2VhZjBmYTBmYiIsImVtYWlsIjoiYWRtaW5AcmVudG5lc3QuY29tIiwicm9sZSI6IkFETUlOIiwiaXNCYW5uZWQiOmZhbHNlLCJpYXQiOjE3ODM1ODA5MjcsImV4cCI6MTc4MzY2NzMyN30.sTCG67Djg6uv6rvMLwxXqGkdpVE_Cd6NZzRQCYG0QW8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Apartment\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/admin/categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get_category_list",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "view_All_users",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MjNkMmMyLTA2MGQtNDZmOS1iNTJiLWNhY2VhZjBmYTBmYiIsImVtYWlsIjoiYWRtaW5AcmVudG5lc3QuY29tIiwicm9sZSI6IkFETUlOIiwiaXNCYW5uZWQiOmZhbHNlLCJpYXQiOjE3ODM1ODUxMjMsImV4cCI6MTc4MzY3MTUyM30.x2sfuDPJePjVOWMaWY1g327eYcHP1HqfK6wG2B_i5ac",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/admin/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ban_user",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MjNkMmMyLTA2MGQtNDZmOS1iNTJiLWNhY2VhZjBmYTBmYiIsImVtYWlsIjoiYWRtaW5AcmVudG5lc3QuY29tIiwicm9sZSI6IkFETUlOIiwiaXNCYW5uZWQiOmZhbHNlLCJpYXQiOjE3ODM1ODU2ODEsImV4cCI6MTc4MzY3MjA4MX0.ASKT3MvJA9tqBLiybowBItFnr4Y77g-RgvGHJiv85Us",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"isBanned\": true\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/admin/users/68b88934-4cbb-4e7e-96a3-a6fb38899574/ban",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "users",
+                "68b88934-4cbb-4e7e-96a3-a6fb38899574",
+                "ban"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "view_all_property",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MjNkMmMyLTA2MGQtNDZmOS1iNTJiLWNhY2VhZjBmYTBmYiIsImVtYWlsIjoiYWRtaW5AcmVudG5lc3QuY29tIiwicm9sZSI6IkFETUlOIiwiaXNCYW5uZWQiOmZhbHNlLCJpYXQiOjE3ODM1ODU2ODEsImV4cCI6MTc4MzY3MjA4MX0.ASKT3MvJA9tqBLiybowBItFnr4Y77g-RgvGHJiv85Us",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/admin/properties",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "properties"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "see_all_rental_req",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MjNkMmMyLTA2MGQtNDZmOS1iNTJiLWNhY2VhZjBmYTBmYiIsImVtYWlsIjoiYWRtaW5AcmVudG5lc3QuY29tIiwicm9sZSI6IkFETUlOIiwiaXNCYW5uZWQiOmZhbHNlLCJpYXQiOjE3ODM1ODU2ODEsImV4cCI6MTc4MzY3MjA4MX0.ASKT3MvJA9tqBLiybowBItFnr4Y77g-RgvGHJiv85Us",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/admin/rentals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "rentals"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Landlord",
+      "item": [
+        {
+          "name": "create_house",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmYWIyZmZkLWQ5NjMtNGI5NC1iZGQwLTQzMTBkMzI0NDZhOSIsImVtYWlsIjoibGFuZGxvcmRAdGVzdC5jb20iLCJyb2xlIjoiTEFORExPUkQiLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTc4MzU4MTUyNCwiZXhwIjoxNzgzNjY3OTI0fQ.FzHkHqWNHOTBWooqHPQt1aZbAh9l76650J10YqbINj8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Modern 2BHK Apartment in Jashore\",\r\n  \"description\": \"Spacious apartment with 2 bedrooms\",\r\n  \"location\": \"Chowrasta, Jashore\",\r\n  \"price\": 15000,\r\n  \"categoryId\": \"9f2c0730-f11e-4f84-8fe6-1e4e84d75c08\",\r\n  \"amenities\": [\"WiFi\",\"Parking\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/landlord/properties",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "landlord",
+                "properties"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "view_req_for_house",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmYWIyZmZkLWQ5NjMtNGI5NC1iZGQwLTQzMTBkMzI0NDZhOSIsImVtYWlsIjoibGFuZGxvcmRAdGVzdC5jb20iLCJyb2xlIjoiTEFORExPUkQiLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTc4MzU4MjY3NywiZXhwIjoxNzgzNjY5MDc3fQ.Lug1Qp8mwecC1I2IBr99RQ9uv1Gb3XtckAZs8OEcx1A",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/landlord/requests",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "landlord",
+                "requests"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "aprove_req",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmYWIyZmZkLWQ5NjMtNGI5NC1iZGQwLTQzMTBkMzI0NDZhOSIsImVtYWlsIjoibGFuZGxvcmRAdGVzdC5jb20iLCJyb2xlIjoiTEFORExPUkQiLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTc4MzU4MjY3NywiZXhwIjoxNzgzNjY5MDc3fQ.Lug1Qp8mwecC1I2IBr99RQ9uv1Gb3XtckAZs8OEcx1A",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"status\": \"APPROVED\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/landlord/requests/ecaa26b6-0efe-4380-866f-66abce44cc2c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "landlord",
+                "requests",
+                "ecaa26b6-0efe-4380-866f-66abce44cc2c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete_property",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmYWIyZmZkLWQ5NjMtNGI5NC1iZGQwLTQzMTBkMzI0NDZhOSIsImVtYWlsIjoibGFuZGxvcmRAdGVzdC5jb20iLCJyb2xlIjoiTEFORExPUkQiLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTc4MzU4NjU3NiwiZXhwIjoxNzgzNjcyOTc2fQ.nK3LL9J8CjPGTrIh93c4fbsdJoEQw0wFQgxhc3GYeRQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/landlord/properties/dea0d540-543b-4be6-82af-d58d9324324f",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "landlord",
+                "properties",
+                "dea0d540-543b-4be6-82af-d58d9324324f"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "public",
+      "item": [
+        {
+          "name": "get_house_list",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/properties",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "properties"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get_house_details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/properties/dea0d540-543b-4be6-82af-d58d9324324f",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "properties",
+                "dea0d540-543b-4be6-82af-d58d9324324f"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "view_review",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/reviews/dea0d540-543b-4be6-82af-d58d9324324f",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "reviews",
+                "dea0d540-543b-4be6-82af-d58d9324324f"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "amenities_filter",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "tenant",
+      "item": [
+        {
+          "name": "create_rental_request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2ZGQ1NmQ0LTc0YzMtNGVlMS04MmRkLTE5ODQwZDMwYTcxYSIsImVtYWlsIjoidGVuYW50QHRlc3QuY29tIiwicm9sZSI6IlRFTkFOVCIsImlzQmFubmVkIjpmYWxzZSwiaWF0IjoxNzgzNTgyMzA2LCJleHAiOjE3ODM2Njg3MDZ9.exGWvYrMQVtihOSbn1YM1o26HYY5QcZ6VC-AZBYJcZ4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"propertyId\": \"dea0d540-543b-4be6-82af-d58d9324324f\",\r\n    \"startDate\": \"2026-08-01\",\r\n    \"endDate\": \"2027-08-01\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/rentals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "rentals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "view_request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2ZGQ1NmQ0LTc0YzMtNGVlMS04MmRkLTE5ODQwZDMwYTcxYSIsImVtYWlsIjoidGVuYW50QHRlc3QuY29tIiwicm9sZSI6IlRFTkFOVCIsImlzQmFubmVkIjpmYWxzZSwiaWF0IjoxNzgzNTgyMzA2LCJleHAiOjE3ODM2Njg3MDZ9.exGWvYrMQVtihOSbn1YM1o26HYY5QcZ6VC-AZBYJcZ4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/rentals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "rentals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "make_payment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2ZGQ1NmQ0LTc0YzMtNGVlMS04MmRkLTE5ODQwZDMwYTcxYSIsImVtYWlsIjoidGVuYW50QHRlc3QuY29tIiwicm9sZSI6IlRFTkFOVCIsImlzQmFubmVkIjpmYWxzZSwiaWF0IjoxNzgzNTgzNDc1LCJleHAiOjE3ODM2Njk4NzV9.9P3T1GJdTNdFpU6XhQxQuqcx7W_tJVlcI0UQXpq8bRE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"rentalRequestId\": \"ecaa26b6-0efe-4380-866f-66abce44cc2c\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/payments/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "payments",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "confirm_payment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2ZGQ1NmQ0LTc0YzMtNGVlMS04MmRkLTE5ODQwZDMwYTcxYSIsImVtYWlsIjoidGVuYW50QHRlc3QuY29tIiwicm9sZSI6IlRFTkFOVCIsImlzQmFubmVkIjpmYWxzZSwiaWF0IjoxNzgzNTgzNDc1LCJleHAiOjE3ODM2Njk4NzV9.9P3T1GJdTNdFpU6XhQxQuqcx7W_tJVlcI0UQXpq8bRE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"rentalRequestId\": \"ecaa26b6-0efe-4380-866f-66abce44cc2c\",\r\n    \"transactionId\": \"pi_3TrCm1Rsvk5TgHgN0Yqu0rHf_secret_Dtd8PiMtjLTvAPT6ge6tMAg85\",\r\n    \"amount\": 15000\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/payments/confirm",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "payments",
+                "confirm"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "payment_history",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2ZGQ1NmQ0LTc0YzMtNGVlMS04MmRkLTE5ODQwZDMwYTcxYSIsImVtYWlsIjoidGVuYW50QHRlc3QuY29tIiwicm9sZSI6IlRFTkFOVCIsImlzQmFubmVkIjpmYWxzZSwiaWF0IjoxNzgzNTgzNDc1LCJleHAiOjE3ODM2Njk4NzV9.9P3T1GJdTNdFpU6XhQxQuqcx7W_tJVlcI0UQXpq8bRE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/payments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "payments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "post_review",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2ZGQ1NmQ0LTc0YzMtNGVlMS04MmRkLTE5ODQwZDMwYTcxYSIsImVtYWlsIjoidGVuYW50QHRlc3QuY29tIiwicm9sZSI6IlRFTkFOVCIsImlzQmFubmVkIjpmYWxzZSwiaWF0IjoxNzgzNTgzNDc1LCJleHAiOjE3ODM2Njk4NzV9.9P3T1GJdTNdFpU6XhQxQuqcx7W_tJVlcI0UQXpq8bRE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"propertyId\": \"dea0d540-543b-4be6-82af-d58d9324324f\",\r\n    \"rating\": 5,\r\n    \"comment\": \"Great place to live!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/reviews",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "reviews"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "security",
+      "item": [
+        {
+          "name": "role-based access control test",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2ZGQ1NmQ0LTc0YzMtNGVlMS04MmRkLTE5ODQwZDMwYTcxYSIsImVtYWlsIjoidGVuYW50QHRlc3QuY29tIiwicm9sZSI6IlRFTkFOVCIsImlzQmFubmVkIjpmYWxzZSwiaWF0IjoxNzgzNTg2Mzg4LCJleHAiOjE3ODM2NzI3ODh9.WeOU7RE_HKaPUESmDbtU6UrqRujcYamszKrLnaaG2Rg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/admin/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
