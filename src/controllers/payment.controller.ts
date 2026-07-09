@@ -46,3 +46,30 @@ export const confirmPayment = async (req: Request, res: Response, next: NextFunc
     res.status(200).json({ success: true, message: 'Payment confirmed successfully', data: result });
   } catch (error) { next(error); }
 };
+
+export const getMyPayments = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const payments = await prisma.payment.findMany({
+      where: { rentalRequest: { tenantId: req.user?.id } },
+      include: { rentalRequest: { include: { property: true } } },
+    });
+    res.status(200).json({ success: true, data: payments });
+  } catch (error) { next(error); }
+};
+
+export const getPaymentById = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const payment = await prisma.payment.findUnique({
+      where: { id: String(req.params.id) },
+      include: { rentalRequest: { include: { property: true } } },
+    });
+
+    if (!payment) return res.status(404).json({ success: false, message: 'Payment not found' });
+
+    if (payment.rentalRequest.tenantId !== req.user?.id) {
+      return res.status(403).json({ success: false, message: 'Not authorized to view this payment' });
+    }
+
+    res.status(200).json({ success: true, data: payment });
+  } catch (error) { next(error); }
+};
