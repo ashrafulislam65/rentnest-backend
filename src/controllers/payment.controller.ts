@@ -41,6 +41,9 @@ export const confirmPayment = async (req: Request, res: Response, next: NextFunc
       });
 
       return payment;
+    }, {
+      maxWait: 10000, // connection নেওয়ার জন্য সর্বোচ্চ অপেক্ষা (ms)
+      timeout: 15000, // পুরো transaction সম্পন্ন করার জন্য সর্বোচ্চ সময় (ms)
     });
 
     res.status(200).json({ success: true, message: 'Payment confirmed successfully', data: result });
