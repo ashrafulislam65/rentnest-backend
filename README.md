@@ -6,6 +6,18 @@ A backend API for a rental property marketplace. Landlords list properties and m
 
 ---
 
+## 🌐 Live Deployment
+
+- **Live API:** https://rentnest-backend-snowy.vercel.app
+- **GitHub Repo:** https://github.com/ashrafulislam65/rentnest-backend
+- **Admin Credentials:**
+  - Email: `admin@rentnest.com`
+  - Password: `admin123`
+
+> Test the live API using Postman — see the [API Endpoints](#-api-endpoints) section below, or import the Postman collection from `docs/Rent_Nest.postman_collection.json`.
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Runtime:** Node.js (v24), TypeScript
