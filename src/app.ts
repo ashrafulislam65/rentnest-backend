@@ -6,6 +6,7 @@ import { authRoutes } from './routes/auth.routes.js';
 import { globalErrorHandler } from './middlewares/globalErrorHandler.js';
 import { landlordRoutes } from './routes/landlord.routes.js';
 import { rentalRoutes } from './routes/rental.routes.js';
+import { paymentRoutes } from './routes/payment.routes.js';
 
 const app: Application = express();
 
@@ -22,6 +23,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api', publicPropertyRoutes);
 app.use('/api/landlord', landlordRoutes);
 app.use('/api/rentals', rentalRoutes);
+app.use('/api/payments', paymentRoutes);
 
 // ৩. 404 Route Handling (রাউট খুঁজে না পেলে এটি ট্রিগার হবে)
 app.use((req: Request, res: Response) => {
